@@ -17,7 +17,7 @@ export class ProductsAppStack extends cdk.Stack{
                 memorySize: 512, // MB
                 functionName: "ProductsFetchFunction",
                 entry: "lambda/products/ProductsFetchFunction.ts",
-                handler: "handler", // nome do metodo de entrada
+                handler: "handler", // name method
                 timeout: cdk.Duration.seconds(5),
                 bundling:{
                     minify: true,
