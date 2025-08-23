@@ -6,8 +6,8 @@ import { ECommerceApiStack } from '../lib/ecommerceAPI-stack';
 const app = new cdk.App();
 
 const env: cdk.Environment = {
-  account: "",
-  region: ""
+  account: "825765426391",
+  region: "us-east-1"
 }
 
 const tags = {
@@ -22,6 +22,7 @@ const productsAppStack = new ProductsAppStack(app, "ProductsAppStack", {
 
 const eCommerceApiStack = new ECommerceApiStack(app, "ECommerceApiStack", {
   productsFetchHandler: productsAppStack.productsFetchHandler,
+  productsAdminHandler: productsAppStack.productsAdminHandler,
   tags: tags,
   env: env
 })
