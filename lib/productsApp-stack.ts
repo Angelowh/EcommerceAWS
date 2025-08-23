@@ -31,7 +31,7 @@ export class ProductsAppStack extends cdk.Stack{
                 runtime: lambda.Runtime.NODEJS_20_X,
                 memorySize: 512, // MB
                 functionName: "ProductsFetchFunction",
-                entry: "lambda/products/ProductsFetchFunction.ts",
+                entry: "lambda/products/productsFetchFunction.ts",
                 handler: "handler", // name method
                 timeout: cdk.Duration.seconds(5),
                 bundling:{
@@ -49,7 +49,7 @@ export class ProductsAppStack extends cdk.Stack{
                 runtime: lambda.Runtime.NODEJS_20_X,
                 memorySize: 512, // MB
                 functionName: "ProductsAdminFunction",
-                entry: "lambda/products/ProductsAdminFunction.ts",
+                entry: "lambda/products/productsAdminFunction.ts",
                 handler: "handler", // name method
                 timeout: cdk.Duration.seconds(5),
                 bundling:{
