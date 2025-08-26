@@ -42,6 +42,10 @@ export async function handler(event: APIGatewayProxyEvent, context: Context): Pr
         }
         catch (error) {
             console.error((<Error> error).message)
+            return{
+                statusCode: 404,
+                body: (<Error> error).message
+            }
         }
     }
     return{
