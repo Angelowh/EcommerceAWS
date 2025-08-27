@@ -1,14 +1,41 @@
-# Welcome to your CDK TypeScript project
+# Ecommerce AWS
+Projeto simples para testar conhecimentos do Curso de AWS Serverless com TypeScript e AWS Development Kit.
 
-This is a blank project for CDK development with TypeScript.
+## 📚 Objetivo
+- Desenvolver uma API simples que tenha as operações de:
+   - Cadastrar produtos
+   - Atualizar produtos
+   - Listagem de produtos
+   - Buscar produto por Id
+   - Deletar produtos 
 
-The `cdk.json` file tells the CDK Toolkit how to execute your app.
+## 📌 Fluxo de funcionamento
 
-## Useful commands
+<img width="1188" height="778" alt="image" src="https://github.com/user-attachments/assets/13b980d7-e86f-4cd7-bb8f-44de40f04b9f" />
 
-* `npm run build`   compile typescript to js
-* `npm run watch`   watch for changes and compile
-* `npm run test`    perform the jest unit tests
-* `npx cdk deploy`  deploy this stack to your default AWS account/region
-* `npx cdk diff`    compare deployed stack with current state
-* `npx cdk synth`   emits the synthesized CloudFormation template
+Descrição do fluxo:
+- Através da API Gateway a request é recebida e validada
+- Após isso, a API Gateway identifica o tipo da request e invoca a função Lambda responsável
+  - Caso seja uma listagem:
+     - Será invocado a função Produtos Fetch. Esta tem apenas permissões de leitura.
+  - Caso seja um cadastro, alteração ou deleção:
+     - Será invocado a função Produtos Admin. Esta tem permissões de alterações na base de dados.
+     - Em seguida também será disparado uma função para gravar eventos ocorridos em uma tabela específica.
+
+## 🛠 Ferramentas:
+
+### 🚧 Product Layer:
+- Para limpeza e centralização de código, foi criado uma layer apenas para as operações relaciondas a tabela de Produtos.
+- Esta solução foi adotada para reduzir o código das funções de Admin e Fetch. Permitindo implementar apenas o que interessa em cada função.
+
+  <img width="1051" height="408" alt="image" src="https://github.com/user-attachments/assets/5db067b2-e7f1-462b-b8cb-cfa30c632b25" />
+
+
+### 📑Base de dados:
+- Para manter o escopo mais simples do projeto, foi adotado o banco NoSQL DynamoDB.
+- Este banco foi adotado para não ter "dor de cabeça" com configurações no modelo relacional.
+
+### 📚 Demais configurações:
+- Para logs, foi adotado o CloudWatch para manter toda config dentro da AWS.
+- Para controle de permissões, o IAM guarda permissões mais sensíveis ao projeto.
+
