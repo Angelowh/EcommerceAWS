@@ -35,7 +35,15 @@ Descrição do fluxo:
 - Para manter o escopo mais simples do projeto, foi adotado o banco NoSQL DynamoDB.
 - Este banco foi adotado para não ter "dor de cabeça" com configurações no modelo relacional.
 
+
 ### 📚 Demais configurações:
 - Para logs, foi adotado o CloudWatch para manter toda config dentro da AWS.
 - Para controle de permissões, o IAM guarda permissões mais sensíveis ao projeto.
+
+---
+
+## Stack
+[![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=fff)](#)
+[![AWS](https://custom-icon-badges.demolab.com/badge/AWS-%23FF9900.svg?logo=aws&logoColor=white)](#)
+[![AWS Lambda](https://custom-icon-badges.demolab.com/badge/AWS%20Lambda-%23FF9900.svg?logo=aws-lambda&logoColor=white)](#)
 
