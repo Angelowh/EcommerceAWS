@@ -40,6 +40,22 @@ Descrição do fluxo:
 - IAM (Controle de permissões)
 ---
 
+## 📌 Como executar o projeto?
+
+Certifique-se de estar com o CLI configurado corretamente e com as permissões necessárias para sua conta.
+Caso seja necessário, consulte em: [Configuração da AWS CLI](https://docs.aws.amazon.com/pt_br/cli/latest/userguide/getting-started-quickstart.html)
+
+1. Dentro da pasta bin, acesso o arquivo "e_commerce_aws.ts";
+2. Note que há variáveis para guardar o account e region da conta, preencha com as informações respectivas de sua conta.
+3. Feito o passo acima, certifique-se de estar rodando o Docker Desktop (ou o Docker Engine, dependendo de sua máquina) e rode o comando "cdk deploy --all"
+4. O processo demora alguns minutos, mas ao ser concluído com sucesso irá criar todos os elementos necessários.
+5. Ao final do processamento, note que será retornado uma URL de Endpoint para acessar as rotas. Copie o valor devolvido.
+6. Em seguida, importe os arquivos para testar as rotas no Insomnia.
+7. Dentro de Environment, substitua o valor do base-URL com o valor da URL de Endpoint retornada no ponto 5.
+
+Processo finalizado e pronto para teste: ✅
+
+---
 ## 👨‍💻 Stack
 [![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=fff)](#)
 [![AWS](https://custom-icon-badges.demolab.com/badge/AWS-%23FF9900.svg?logo=aws&logoColor=white)](#)
