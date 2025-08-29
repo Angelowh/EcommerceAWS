@@ -37,9 +37,8 @@ Descrição do fluxo:
 
 
 ### 📚 Demais configurações:
-- Para logs, foi adotado o CloudWatch para manter toda config dentro da AWS.
-- Para controle de permissões, o IAM guarda permissões mais sensíveis ao projeto.
-
+- CloudWatch (para gravar logs em LogGroups)
+- IAM (Controle de permissões)
 ---
 
 ## 👨‍💻 Stack
