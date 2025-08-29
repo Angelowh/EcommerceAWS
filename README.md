@@ -33,7 +33,6 @@ Descrição do fluxo:
 
 ### 📑Base de dados:
 - Para manter o escopo mais simples do projeto, foi adotado o banco NoSQL DynamoDB.
-- Este banco foi adotado para não ter "dor de cabeça" com configurações no modelo relacional.
 
 
 ### 📚 Demais configurações:
