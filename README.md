@@ -1,6 +1,13 @@
 # Ecommerce AWS
 Projeto simples para testar conhecimentos do Curso de AWS Serverless com TypeScript e AWS Development Kit.
 
+---
+
+## Status do Projeto: 
+🚧 Em Desenvolvimento 🚧
+
+
+
 ## 📚 Objetivo
 - Desenvolver uma API simples que tenha as operações de:
    - Cadastrar produtos
