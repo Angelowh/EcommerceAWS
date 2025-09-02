@@ -62,7 +62,7 @@ Pré Requisitos:
 6. Em seguida, importe os arquivos para testar as rotas no Insomnia.
 7. Dentro de Environment, substitua o valor do base-URL com o valor da URL de Endpoint retornada no ponto 5.
 
-Processo finalizado e pronto para teste: ✅
+Setup finalizado e pronto para teste: ✅
 
 ---
 ## 👨‍💻 Stack
