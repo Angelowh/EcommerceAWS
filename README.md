@@ -49,11 +49,12 @@ Descrição do fluxo:
 
 ## 📌 Como executar o projeto?
 
-Pré Requisitos:
+### Pré Requisitos:
 - Certifique-se de estar com o CLI configurado corretamente e com as permissões necessárias para sua conta.
 - Caso seja necessário, consulte em: [Configuração da AWS CLI](https://docs.aws.amazon.com/pt_br/cli/latest/userguide/getting-started-quickstart.html)
 - Instale o Docker Desktop (ou o Docker Engine caso não tenha permissão de instalar na máquina todos os recursos)
 
+### Passos:
 1. Dentro da pasta bin, acesso o arquivo "e_commerce_aws.ts";
 2. Note que há variáveis para guardar o account e region da conta, preencha com as informações respectivas de sua conta.
 3. Feito o passo acima, certifique-se de estar rodando o Docker Desktop (ou o Docker Engine) e rode o comando "cdk deploy --all".
