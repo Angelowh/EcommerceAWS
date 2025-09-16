@@ -7,7 +7,6 @@ Projeto simples para testar conhecimentos do Curso de AWS Serverless com TypeScr
 🚧 Em Desenvolvimento 🚧
 
 
-
 ## 📚 Objetivo
 - Desenvolver uma API simples que tenha as operações de:
    - Cadastrar produtos
