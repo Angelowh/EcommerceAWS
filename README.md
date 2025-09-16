@@ -1,8 +1,11 @@
 # Ecommerce AWS
 Projeto simples para testar conhecimentos do Curso de AWS Serverless com TypeScript e AWS Development Kit.
 
-## Status do projeto
-🚧 Em andamento 🚧
+---
+
+## Status do Projeto: 
+🚧 Em Desenvolvimento 🚧
+
 
 ## 📚 Objetivo
 - Desenvolver uma API simples que tenha as operações de:
@@ -36,15 +39,32 @@ Descrição do fluxo:
 
 ### 📑Base de dados:
 - Para manter o escopo mais simples do projeto, foi adotado o banco NoSQL DynamoDB.
-- Este banco foi adotado para não ter "dor de cabeça" com configurações no modelo relacional.
 
 
 ### 📚 Demais configurações:
-- Para logs, foi adotado o CloudWatch para manter toda config dentro da AWS.
-- Para controle de permissões, o IAM guarda permissões mais sensíveis ao projeto.
-
+- CloudWatch (para gravar logs em LogGroups)
+- IAM (Controle de permissões)
 ---
 
+## 📌 Como executar o projeto?
+
+### Pré Requisitos:
+- Certifique-se de estar com o CLI configurado corretamente e com as permissões necessárias para sua conta.
+- Caso seja necessário, consulte em: [Configuração da AWS CLI](https://docs.aws.amazon.com/pt_br/cli/latest/userguide/getting-started-quickstart.html)
+- Instale o Docker Desktop (ou o Docker Engine caso não tenha permissão de instalar na máquina todos os recursos)
+
+### Passos:
+1. Dentro da pasta bin, acesso o arquivo "e_commerce_aws.ts";
+2. Note que há variáveis para guardar o account e region da conta, preencha com as informações respectivas de sua conta.
+3. Feito o passo acima, certifique-se de estar rodando o Docker Desktop (ou o Docker Engine) e rode o comando "cdk deploy --all".
+4. O processo demora alguns minutos, mas ao ser concluído com sucesso irá criar todos os elementos necessários.
+5. Ao final do processamento, note que será retornado uma URL de Endpoint para acessar as rotas. Copie o valor devolvido.
+6. Em seguida, importe os arquivos para testar as rotas no Insomnia.
+7. Dentro de Environment, substitua o valor do base-URL com o valor da URL de Endpoint retornada no ponto 5.
+
+Setup finalizado e pronto para teste: ✅
+
+---
 ## 👨‍💻 Stack
 [![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=fff)](#)
 [![AWS](https://custom-icon-badges.demolab.com/badge/AWS-%23FF9900.svg?logo=aws&logoColor=white)](#)
