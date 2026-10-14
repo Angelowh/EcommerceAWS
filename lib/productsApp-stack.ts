@@ -30,12 +30,17 @@ export class ProductsAppStack extends cdk.Stack{
             writeCapacity: 1
         })
 
+        // Products Lambda Layer
         const productsLayerArn = ssm.StringParameter.valueForStringParameter(this, "ProductsLayerVersionArn")
         const productsLayer = lambda.LayerVersion.fromLayerVersionArn(this, "ProductsLayerVersionArn", productsLayerArn)
 
+        // Products Events Lambda Layer
+        const productsEventsLayerArn = ssm.StringParameter.valueForStringParameter(this, "ProductsEventsLayerVersionArn")
+        const productsEventsLayer = lambda.LayerVersion.fromLayerVersionArn(this, "ProductsEventsLayerVersionArn", productsEventsLayerArn)
+
         const productsEventsHandler = new lambdaNodeJS.NodejsFunction(this,
             "ProductsEventsFunction", {
-                runtime: lambda.Runtime.NODEJS_20_X,
+                runtime: lambda.Runtime.NODEJS_22_X,
                 memorySize: 128, // MB
                 functionName: "ProductsEventsFunction",
                 entry: "lambda/products/productEventsFunction.ts",
@@ -49,6 +54,7 @@ export class ProductsAppStack extends cdk.Stack{
                 environment:{
                     EVENTS_DDB: props.eventsDbd.tableName,
                 },
+                layers: [productsEventsLayer],
                 tracing: lambda.Tracing.ACTIVE,
                 insightsVersion: lambda.LambdaInsightsVersion.VERSION_1_0_119_0
             })
@@ -57,7 +63,7 @@ export class ProductsAppStack extends cdk.Stack{
 
         this.productsFetchHandler = new lambdaNodeJS.NodejsFunction(this, 
             "ProductsFetchFunction", {
-                runtime: lambda.Runtime.NODEJS_20_X,
+                runtime: lambda.Runtime.NODEJS_22_X,
                 memorySize: 512, // MB
                 functionName: "ProductsFetchFunction",
                 entry: "lambda/products/productsFetchFunction.ts",
@@ -79,7 +85,7 @@ export class ProductsAppStack extends cdk.Stack{
 
         this.productsAdminHandler = new lambdaNodeJS.NodejsFunction(this, 
             "ProductsAdminFunction", {
-                runtime: lambda.Runtime.NODEJS_20_X,
+                runtime: lambda.Runtime.NODEJS_22_X,
                 memorySize: 512, // MB
                 functionName: "ProductsAdminFunction",
                 entry: "lambda/products/productsAdminFunction.ts",
@@ -94,7 +100,7 @@ export class ProductsAppStack extends cdk.Stack{
                     PRODUCTS_DDB: this.productsDdb.tableName,
                     PRODUCTS_EVENTS_FUNCTION_NAME: productsEventsHandler.functionName
                 },
-                layers: [productsLayer],
+                layers: [productsLayer, productsEventsLayer],
                 tracing: lambda.Tracing.ACTIVE,
                 insightsVersion: lambda.LambdaInsightsVersion.VERSION_1_0_119_0
             })

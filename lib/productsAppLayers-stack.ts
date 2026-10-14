@@ -1,24 +1,34 @@
-import * as cdk from "aws-cdk-lib"
-import { Construct } from "constructs"
-import * as lambda from "aws-cdk-lib/aws-lambda"
-import * as ssm from "aws-cdk-lib/aws-ssm"
+import * as cdk from 'aws-cdk-lib';
+import { Construct } from 'constructs';
+import * as lambda from 'aws-cdk-lib/aws-lambda';
+import * as ssm from 'aws-cdk-lib/aws-ssm';
 
-export class ProductsAppLayerStack extends cdk.Stack{
-    readonly productsLayers: lambda.LayerVersion
+export class ProductsAppLayerStack extends cdk.Stack {
+  constructor(scope: Construct, id: string, props?: cdk.StackProps) {
+    super(scope, id, props);
 
-    constructor(scope: Construct, id: string, props?: cdk.StackProps){
-        super(scope, id, props)
+    const productsLayers = new lambda.LayerVersion(this, 'ProductsLayer', {
+      code: lambda.Code.fromAsset('lambda/products/layers/productsLayer'),
+      compatibleRuntimes: [lambda.Runtime.NODEJS_22_X],
+      layerVersionName: 'ProductsLayer',
+      removalPolicy: cdk.RemovalPolicy.RETAIN,
+    });
 
-        this.productsLayers = new lambda.LayerVersion(this, "ProductsLayer", {
-            code: lambda.Code.fromAsset('lambda/products/layers/productsLayer'),
-            compatibleRuntimes: [lambda.Runtime.NODEJS_22_X],
-            layerVersionName: "ProductsLayer",
-            removalPolicy: cdk.RemovalPolicy.RETAIN
-        })
+    new ssm.StringParameter(this, 'ProductsLayerVersionArn', {
+      parameterName: 'ProductsLayerVersionArn',
+      stringValue: productsLayers.layerVersionArn,
+    });
 
-        new ssm.StringParameter(this, "ProductsLayerVersionArn", {
-            parameterName: "ProductsLayerVersionArn",
-            stringValue: this.productsLayers.layerVersionArn
-        })
-    }
+    const productsEventsLayers = new lambda.LayerVersion(this, 'ProductsEventsLayer', {
+      code: lambda.Code.fromAsset('lambda/products/layers/productsEventsLayer'),
+      compatibleRuntimes: [lambda.Runtime.NODEJS_22_X],
+      layerVersionName: 'ProductsEventsLayer',
+      removalPolicy: cdk.RemovalPolicy.RETAIN,
+    });
+
+    new ssm.StringParameter(this, 'ProductsEventsLayerVersionArn', {
+      parameterName: 'ProductsEventsLayerVersionArn',
+      stringValue: productsEventsLayers.layerVersionArn,
+    });
+  }
 }
